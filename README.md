@@ -1,1 +1,1 @@
-# LogAplication
+# LogApplication
