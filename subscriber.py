@@ -6,9 +6,9 @@ from os import environ
 import django
 
 #Define the connection parameters to the broker message
-rabbit_host = '10.128.0.5'
-rabbit_user = 'monitoring_user'
-rabbit_password = 'isis2503'
+rabbit_host = '10.128.0.53'
+rabbit_user = 'admin'
+rabbit_password = 'admin'
 exchange = 'BancoLosAlpes'
 topics = ['solicitud']
 
