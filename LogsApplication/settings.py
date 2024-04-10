@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'LogsApplication.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'arqui',
+        'NAME': 'BancoLosAlpes',
         'USER': 'postgres',
         'PASSWORD': 'XSHhar97',
         'HOST': 'localhost',
