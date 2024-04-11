@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'banco_los_alpes',
         'USER': 'admin',
         'PASSWORD': 'isis2503',
-        'HOST': '172.23.192.3',
+        'HOST': '10.128.0.52',
         'PORT': '',
     }
 }
