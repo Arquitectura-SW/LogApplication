@@ -12,8 +12,8 @@ rabbit_password = 'admin'
 exchange = 'BancoLosAlpes'
 topics = ['solicitud']
 
-path.append('isis2503_BancoLosAlpes/settings.py')
-environ.setdefault('DJANGO_SETTINGS_MODULE', 'isis2503_BancoLosAlpes.settings')
+path.append('LogsApplication/settings.py')
+environ.setdefault('DJANGO_SETTINGS_MODULE', 'LogsApplication.settings')
 django.setup()
 
 from logs.models import Log
