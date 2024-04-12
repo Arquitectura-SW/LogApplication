@@ -5,7 +5,7 @@ from sys import path
 from os import environ
 from datetime import datetime
 import django
-from clientes.models import Cliente
+
 
 #Define the connection parameters to the broker message
 rabbit_host = '10.128.0.53'
@@ -20,6 +20,7 @@ django.setup()
 
 from logs.models import Log
 from logs.logic.logic_logs import createLog, createLogObject
+from clientes.models import Cliente
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))
