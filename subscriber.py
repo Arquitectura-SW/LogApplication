@@ -7,14 +7,14 @@ import datetime
 import django
 
 #Define the connection parameters to the broker message
-rabbit_host = '10.128.0.5'
-rabbit_user = 'monitoring_user'
-rabbit_password = 'isis2503'
+rabbit_host = '10.128.0.53'
+rabbit_user = 'admin'
+rabbit_password = 'admin'
 exchange = 'BancoLosAlpes'
 topics = ['solicitud']
 
-path.append('isis2503_BancoLosAlpes/settings.py')
-environ.setdefault('DJANGO_SETTINGS_MODULE', 'isis2503_BancoLosAlpes.settings')
+path.append('LogsApplication/settings.py')
+environ.setdefault('DJANGO_SETTINGS_MODULE', 'LogsApplication.settings')
 django.setup()
 
 from logs.models import Log
