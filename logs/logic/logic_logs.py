@@ -8,8 +8,9 @@ def createLog(formLog):
     log = formLog.save()
     log.save()
 
-def createLogObject(level, message, created, user, time):
+def createLogObject(id, level, message, created, user, time):
     log = Log()
+    log.id = id
     log.level = level
     log.message = message
     log.created = created

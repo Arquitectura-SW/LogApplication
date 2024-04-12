@@ -5,6 +5,7 @@ class solicitudForm(forms.ModelForm):
     class Meta:
         model = Log
         fields = [
+            'id',
             'level',
             'message',
             'created'
@@ -13,6 +14,7 @@ class solicitudForm(forms.ModelForm):
         ]
 
         labels = {
+            'id': 'id',
             'level': 'level',
             'message' : 'message',
             'created' : 'created',

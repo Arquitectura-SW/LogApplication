@@ -5,6 +5,7 @@ from sys import path
 from os import environ
 from datetime import datetime
 import django
+from uuid import uuid4
 
 
 #Define the connection parameters to the broker message
@@ -40,20 +41,15 @@ print('> Waiting logs. To exit press CTRL+C')
 
 def callback(ch, method, properties, body):
     payload = json.loads(body.decode('utf8').replace("'", '"'))
+    logId = uuid4()
     creationDate = datetime.now().isoformat()
-    print(creationDate)
     createdLog = datetime.fromisoformat(creationDate)
-    print(createdLog)
     createdSol = datetime.fromisoformat(payload['creationDate'])
-    print(createdSol)
-    diferencia = (createdLog - createdSol)
-    print(diferencia)
     cliente = Cliente.objects.get(document= int(payload['user_id']))
-    print(cliente)
     print('Creation Date ' + str(payload['creationDate']) 
           + 'S tatus ' + str(payload['status']) + ' Documento Cliente ' + str(payload['user_id']) + str(creationDate) + " Creacion Log " + 
-          str(diferencia) + " Tiempo de diferencia")
-    createLogObject(level='INFO', message=str(payload), created=creationDate, user=cliente, time=str(diferencia()))
+          str((createdLog - createdSol)) + " Tiempo de diferencia")
+    createLogObject(id=logId, level='INFO', message=str(payload), created=creationDate, user=cliente, time=str((createdLog - createdSol)))
 channel.basic_consume(
     queue=queue_name, on_message_callback=callback, auto_ack=True)
 
