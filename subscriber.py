@@ -5,6 +5,7 @@ from sys import path
 from os import environ
 from datetime import datetime
 import django
+from clientes.models import Cliente
 
 #Define the connection parameters to the broker message
 rabbit_host = '10.128.0.53'
@@ -43,8 +44,9 @@ def callback(ch, method, properties, body):
     creationDate = datetime.now().isoformat()
     createdLog = datetime.fromisoformat(creationDate)
     createdSol = datetime.fromisoformat(payload['creationDate'])
+    cliente = Cliente.objects.get(document= payload['user_id'])
     diferencia = (createdLog - createdSol)
-    createLogObject(level='INFO', message=str(payload), created=creationDate, user=int(payload['user_id']), time=str(diferencia.total_seconds()))
+    createLogObject(level='INFO', message=str(payload), created=creationDate, user=cliente, time=str(diferencia.total_seconds()))
 channel.basic_consume(
     queue=queue_name, on_message_callback=callback, auto_ack=True)
 

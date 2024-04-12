@@ -5,7 +5,7 @@ class Log(models.Model):
     level = models.CharField(max_length=10)
     message = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(Cliente.document, on_delete = models.CASCADE, default = None)
+    user = models.ForeignKey(Cliente, on_delete = models.CASCADE, default = None)
     time = models.CharField(max_length = 50)
 
     def str(self):
