@@ -8,10 +8,14 @@ class solicitudForm(forms.ModelForm):
             'level',
             'message',
             'created'
+            'user'
+            'time'
         ]
 
         labels = {
             'level': 'level',
             'message' : 'message',
-            'created' : 'created'
+            'created' : 'created',
+            'user': 'user',
+            'time': 'time'
         }

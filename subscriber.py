@@ -3,6 +3,7 @@ from random import randint
 import pika
 from sys import path
 from os import environ
+import datetime
 import django
 
 #Define the connection parameters to the broker message
@@ -38,9 +39,14 @@ print('> Waiting logs. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     payload = json.loads(body.decode('utf8').replace("'", '"'))
     print('Creation Date ' + str(payload['creationDate']) 
-          + 'Status ' + str(payload['status']) + 'Docuemnto Cliente ' + str(payload['user_id']))
-    createLogObject(level='INFO', message= str(payload), created= str(payload['creationDate']))
+          + 'Status ' + str(payload['status']) + 'Documento Cliente ' + str(payload['user_id']))
+    creationDate = datetime.now().isoformat()
+    createdLog = datetime.fromisoformat(creationDate)
+    createdSol = datetime.fromisoformat(payload['creationDate'])
+    diferecia = (createdLog - createdSol)
+    createLogObject(level='INFO', message= str(payload), created= creationDate, user = int(payload['user_id'], time = str(diferecia.total_segundos())))
 channel.basic_consume(
     queue=queue_name, on_message_callback=callback, auto_ack=True)
 
 channel.start_consuming()
+
