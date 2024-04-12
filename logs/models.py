@@ -6,7 +6,7 @@ class Log(models.Model):
     level = models.CharField(max_length=10)
     message = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    user = models.BigIntegerField()
+    user = models.BigIntegerField(default=None)
     time = models.TextField(default='')
 
     def str(self):
