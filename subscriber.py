@@ -50,7 +50,7 @@ def callback(ch, method, properties, body):
     print('Creation Date ' + str(payload['creationDate']) 
           + 'S tatus ' + str(payload['status']) + ' Documento Cliente ' + str(payload['user_id']) + str(creationDate) + " Creacion Log " + 
           str((createdLog - createdSol)) + " Tiempo de diferencia")
-    createLogObject(id=logId, level='INFO', message=str(payload), created=creationDate, user=int(payload['user_id']), time=str((createdLog - createdSol)))
+    createLogObject(uid=logId, level='INFO', message=str(payload), created=creationDate, user=int(payload['user_id']), time=str((createdLog - createdSol)))
 channel.basic_consume(
     queue=queue_name, on_message_callback=callback, auto_ack=True)
 

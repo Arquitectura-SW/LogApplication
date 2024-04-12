@@ -2,9 +2,9 @@ from logs.models import Log
 def getLogs():
     return Log.objects.all().order_by('created')
 
-def createLogObject(id, level, message, created, user, time):
+def createLogObject(uid, level, message, created, user, time):
     log = Log()
-    log.id = id
+    log.uid = uid
     log.level = level
     log.message = message
     log.created = created
