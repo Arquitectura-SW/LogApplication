@@ -45,6 +45,8 @@ def callback(ch, method, properties, body):
     print(createdLog)
     createdSol = datetime.fromisoformat(payload['creationDate'])
     print(createdSol)
+    diferencia = createdLog - createdSol
+    print(diferencia)
     print('Creation Date ' + str(payload['creationDate']) 
           + 'S tatus ' + str(payload['status']) + ' Documento Cliente ' + str(payload['user_id']) + str(creationDate) + " Creacion Log " + 
           str((createdLog - createdSol)) + " Tiempo de diferencia")
