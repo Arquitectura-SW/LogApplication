@@ -1,12 +1,6 @@
 from logs.models import Log
-from clientes.models import Cliente
 def getLogs():
-    queryset = Log.objects.all().order_by('created')
-    return (queryset)
-
-def createLog(formLog):
-    log = formLog.save()
-    log.save()
+    return Log.objects.all().order_by('created')
 
 def createLogObject(id, level, message, created, user, time):
     log = Log()
@@ -19,12 +13,8 @@ def createLogObject(id, level, message, created, user, time):
     log.save()
 
 def getLogsByDocumento(document):
-        userSelect = None
-        logs = None
-        try:
-            userSelect = Cliente.objects.get(document=document)
-            if userSelect != None:
-                 logs = Log.objects.filter(user=document)
-        except:
-            logs
+    try:
+        logs = Log.objects.filter(user=document)
         return logs
+    except Exception as e:
+        return None

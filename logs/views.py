@@ -1,21 +1,32 @@
 from django.shortcuts import render
 from django.contrib import messages
-from .forms import solicitudForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .logic.logic_logs import getLogs, createLog, getLogsByDocumento
+from .serializer import LogSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework import status
+from .logic.logic_logs import getLogs, getLogsByDocumento
+
+@api_view(['GET'])
 
 def logsList(request):
-    listaSol = getLogs()
-    context = {
-        'logsList':listaSol
-    }
-    return render(request, 'logs/logs.html', context)
+    if request == 'GET':
+        try:
+            logs = getLogs()
+            serializer = LogSerializer(logs, many= True)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response({"error": "The logs wasn't found."}, status=status.HTTP_400_BAD_REQUEST)
 
-def logsListDocumento(request, documento):
-    listaSol = getLogsByDocumento(documento)
-    context = {
-        'logsList':listaSol
-    }
-    return render(request, 'logs/logsByDoc.html', context)
+@api_view(['GET'])     
+def logListByDocumento(request, document):
+    if request == 'GET':
+        try:
+            logs = getLogsByDocumento(document)
+            serialiazer = LogSerializer(logs, many=True)
+            return Response(serialiazer.data)
+        except Exception as e:
+            return Response({"error": "The logs wasn't found."}, status=status.HTTP_400_BAD_REQUEST)
+
 
