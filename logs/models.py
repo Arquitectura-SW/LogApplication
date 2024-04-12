@@ -1,7 +1,8 @@
 from django.db import models
+from uuid import uuid
 
 class Log(models.Model):
-    id = models.CharField(max_length=120)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     level = models.CharField(max_length=10)
     message = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
