@@ -3,7 +3,7 @@ from random import randint
 import pika
 from sys import path
 from os import environ
-import datetime
+from datetime import datetime
 import django
 
 #Define the connection parameters to the broker message
