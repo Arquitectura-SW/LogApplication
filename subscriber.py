@@ -43,8 +43,8 @@ def callback(ch, method, properties, body):
     creationDate = datetime.now().isoformat()
     createdLog = datetime.fromisoformat(creationDate)
     createdSol = datetime.fromisoformat(payload['creationDate'])
-    diferecia = (createdLog - createdSol)
-    createLogObject(level='INFO', message= str(payload), created= creationDate, user = int(payload['user_id'], time = str(diferecia.total_segundos())))
+    diferencia = (createdLog - createdSol)
+    createLogObject(level='INFO', message=str(payload), created=creationDate, user=int(payload['user_id']), time=str(diferencia.total_seconds()))
 channel.basic_consume(
     queue=queue_name, on_message_callback=callback, auto_ack=True)
 
