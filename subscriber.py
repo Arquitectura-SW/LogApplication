@@ -3,7 +3,7 @@ from random import randint
 import pika
 from sys import path
 from os import environ
-from datetime import datetime
+from datetime import datetime, timezone
 import django
 from uuid import uuid4
 
@@ -40,7 +40,7 @@ print('> Waiting logs. To exit press CTRL+C')
 def callback(ch, method, properties, body):
     payload = json.loads(body.decode('utf8').replace("'", '"'))
     logId = uuid4()
-    creationDate = datetime.now().isoformat()
+    creationDate = datetime.now(timezone.utc).isoformat()
     createdLog = datetime.fromisoformat(creationDate)
     print(createdLog)
     createdSol = datetime.fromisoformat(payload['creationDate'])
