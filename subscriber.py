@@ -42,7 +42,9 @@ def callback(ch, method, properties, body):
     logId = uuid4()
     creationDate = datetime.now().isoformat()
     createdLog = datetime.fromisoformat(creationDate)
+    print(createdLog)
     createdSol = datetime.fromisoformat(payload['creationDate'])
+    print(createdSol)
     print('Creation Date ' + str(payload['creationDate']) 
           + 'S tatus ' + str(payload['status']) + ' Documento Cliente ' + str(payload['user_id']) + str(creationDate) + " Creacion Log " + 
           str((createdLog - createdSol)) + " Tiempo de diferencia")
