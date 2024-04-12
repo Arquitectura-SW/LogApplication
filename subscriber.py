@@ -19,9 +19,7 @@ path.append('LogsApplication/settings.py')
 environ.setdefault('DJANGO_SETTINGS_MODULE', 'LogsApplication.settings')
 django.setup()
 
-from logs.models import Log
-from logs.logic.logic_logs import createLog, createLogObject
-from clientes.models import Cliente
+from logs.logic.logic_logs import createLogObject
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password)))

@@ -1,8 +1,7 @@
 from django.urls import path
-from django.views.decorators.csrf import csrf_exempt
-from .views import logsList, logsListDocumento
+from .views import logsList, logListByDocumento
 
 urlpatterns = [
     path('logs/', logsList),
-    path('logs/<int:documento>', logsListDocumento)
+    path('logs/<int:documento>', logListByDocumento)
 ]
