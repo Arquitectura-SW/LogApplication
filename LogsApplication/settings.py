@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'LogsApplication.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Logs',
+        'NAME': 'LogsV2',
         'USER': 'admin',
         'PASSWORD': 'isis2503',
         'HOST': '172.23.192.7',
