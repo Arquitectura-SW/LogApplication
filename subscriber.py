@@ -36,7 +36,6 @@ print('> Waiting logs. To exit press CTRL+C')
 
 
 def callback(ch, method, properties, body):
-    print(f' [x] Received {body}')
     payload = json.loads(body.decode('utf8').replace("'", '"'))
     logId = uuid4()
     createdLog = datetime.fromisoformat(datetime.now(timezone.utc).isoformat())
