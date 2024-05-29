@@ -39,7 +39,7 @@ def callback(ch, method, properties, body):
     payload = json.loads(body.decode('utf8').replace("'", '"'))
     logId = uuid4()
     createdLog = datetime.fromisoformat(datetime.now(timezone.utc).isoformat())
-    createdSol = datetime.fromisoformat(payload['creationDate'])
+    createdSol = datetime.fromisoformat(payload['timestamp'])
     diferencia = createdLog - createdSol
     user= int(payload['user'])
     message = payload['message']
