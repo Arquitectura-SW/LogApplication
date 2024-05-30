@@ -1,13 +1,13 @@
 from logs.models import Log
+
 def getLogs():
     return Log.objects.all().order_by('created')
 
-def createLogObject(uid, level, message, created, user, time):
+def createLogObject(uid, level, message, user, time):
     log = Log()
     log.uid = uid
     log.level = level
     log.message = message
-    log.created = created
     log.user = user
     log.time = time
     log.save()
