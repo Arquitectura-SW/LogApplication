@@ -7,7 +7,8 @@ import django
 from uuid import uuid4
 
 #Define the connection parameters to the broker message
-rabbit_host = '10.128.0.12'
+
+rabbit_host = '10.128.0.14'
 rabbit_user = 'admin'
 rabbit_password = 'admin'
 exchange = 'BancoLosAlpes'
